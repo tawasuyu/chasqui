@@ -1,0 +1,33 @@
+[package]
+name = "card-sidecar"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+publish.workspace = true
+description = "Brahman — sidecar reusable: thread + tokio runtime que mantiene viva la sesión de un módulo contra el Init."
+
+[dependencies]
+card-core = { workspace = true }
+card-handshake = { path = "../card-handshake" }
+# Discovery remoto por DHT: el resolver local-first/remote-fallback expone
+# `&BrahmanNet` y `PeerId` en su API pública.
+card-net = { workspace = true }
+thiserror = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+tracing-subscriber = { workspace = true }
+card-wit = { workspace = true }
+chasqui-broker = { path = "../chasqui-broker" }
+tempfile = { workspace = true }
+
+[[example]]
+name = "presence"
+path = "examples/presence.rs"
+
+[[example]]
+name = "presence-conscious"
+path = "examples/presence-conscious.rs"
